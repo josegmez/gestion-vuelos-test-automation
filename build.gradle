@@ -3,6 +3,9 @@ buildscript {
         mavenLocal()
         mavenCentral()
     }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:4.2.1")
+    }
 }
 
 plugins {
@@ -11,6 +14,9 @@ plugins {
     id 'eclipse'
     id 'idea'
 }
+
+defaultTasks 'clean', 'test', 'aggregate'
+apply plugin: 'net.serenity-bdd.serenity-gradle-plugin'
 
 group 'co.edu.udea.codefactory'
 
@@ -54,7 +60,6 @@ dependencies {
 
 }
 
-tasks.named('test') {
-    // System configs
-
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
