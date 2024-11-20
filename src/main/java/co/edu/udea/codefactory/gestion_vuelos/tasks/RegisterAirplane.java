@@ -20,8 +20,11 @@ public class RegisterAirplane implements Task {
     public <T extends Actor> void performAs(T actor) {
         Integer[] seatValues = this.airplaneType.getSeatLayoutParts();
 
+        if (airplaneType.name != null) {
+            actor.attemptsTo(Enter.theValue(airplaneType.getName()).into(RegisterAirplaneInterface.AIRPLANE_NAME_FIELD));
+        }
+
         actor.attemptsTo(
-                Enter.theValue(airplaneType.getName()).into(RegisterAirplaneInterface.AIRPLANE_NAME_FIELD),
                 Click.on(RegisterAirplaneInterface.FAMILY_FIELD),
                 Click.on(RegisterAirplaneInterface.FAMILY_OPTION.of(airplaneType.getFamily())),
                 Enter.theValue(String.valueOf(airplaneType.getSeatNumber())).into(RegisterAirplaneInterface.SEAT_NUMBER_FIELD),
