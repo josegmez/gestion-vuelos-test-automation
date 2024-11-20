@@ -10,14 +10,14 @@ import java.util.stream.Collectors;
 
 public class TableHeaders implements Question<Boolean> {
     private Target target;
-    private String expectedTextContent;
+    private List<String> expectedTextContent;
 
-    public TableHeaders(Target target, String expectedTextContent) {
+    public TableHeaders(Target target, List<String> expectedTextContent) {
         this.target = target;
         this.expectedTextContent = expectedTextContent;
     }
 
-    public static TableHeaders includes(Target target, String expectedTextContent) {
+    public static TableHeaders includes(Target target, List<String> expectedTextContent) {
         return new TableHeaders(target, expectedTextContent);
     }
 
@@ -29,6 +29,6 @@ public class TableHeaders implements Question<Boolean> {
                 .map(WebElementFacade::getText)
                 .collect(Collectors.toList());
 
-        return headerTexts.stream().anyMatch(text -> text.equals(this.expectedTextContent));
+        return headerTexts.containsAll(this.expectedTextContent);
     }
 }
