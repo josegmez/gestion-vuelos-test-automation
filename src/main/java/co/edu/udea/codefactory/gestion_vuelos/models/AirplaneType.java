@@ -2,19 +2,16 @@ package co.edu.udea.codefactory.gestion_vuelos.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
 @Data
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class AirplaneType {
     public String name;
-    @NotNull public String family;
-    @NotNull public Integer seatNumber;
-    @NotNull public String seatLayout;
+    public String family;
+    public Integer seatNumber;
+    public String seatLayout;
 
 
     public Integer[] getSeatLayoutParts() {

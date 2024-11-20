@@ -1,6 +1,7 @@
 package co.edu.udea.codefactory.gestion_vuelos.stepdefinitions;
 
 import co.edu.udea.codefactory.gestion_vuelos.models.AirplaneType;
+import co.edu.udea.codefactory.gestion_vuelos.questions.InputErrorMessage;
 import co.edu.udea.codefactory.gestion_vuelos.questions.Item;
 import co.edu.udea.codefactory.gestion_vuelos.questions.ToastMessage;
 import co.edu.udea.codefactory.gestion_vuelos.questions.UserLocation;
@@ -52,7 +53,7 @@ public class RegisterAirplaneSteps {
         ));
     }
 
-    @When("^ingresa datos válidos en todos los campos requeridos$")
+    @When("^ingresa los siguientes datos en el formulario$")
     public void fillAirplaneForm(Map<String, Object> data) {
         AirplaneType airplaneType = AirplaneType.FromMap(data);
         user.attemptsTo(RegisterAirplane.withDetails(airplaneType));
@@ -82,6 +83,15 @@ public class RegisterAirplaneSteps {
         );
         user.should(seeThat(
                 Item.isVisible(AirplanesInterface.airplaneRow(model))
+        ));
+    }
+
+    // Those steps are implemented for exception handling
+
+    @And("debe mostrar un mensaje de error indicando que el campo Nombre es obligatorio")
+    public void showErrorMessageForFamilyField() {
+        user.should(seeThat(
+                InputErrorMessage.isVisible(AirplaneFormInterface.AIRPLANE_NAME_FIELD)
         ));
     }
 }

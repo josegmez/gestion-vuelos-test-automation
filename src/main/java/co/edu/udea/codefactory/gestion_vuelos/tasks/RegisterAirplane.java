@@ -24,10 +24,15 @@ public class RegisterAirplane implements Task {
             actor.attemptsTo(Enter.theValue(airplaneType.getName()).into(AirplaneFormInterface.AIRPLANE_NAME_FIELD));
         }
 
+        if (airplaneType.family != null) {
+            actor.attemptsTo(
+                    Click.on(AirplaneFormInterface.FAMILY_FIELD),
+                    Click.on(AirplaneFormInterface.familyOption(airplaneType.getFamily())),
+                    Enter.theValue(String.valueOf(airplaneType.getSeatNumber())).into(AirplaneFormInterface.SEAT_NUMBER_FIELD)
+            );
+        }
+
         actor.attemptsTo(
-                Click.on(AirplaneFormInterface.FAMILY_FIELD),
-                Click.on(AirplaneFormInterface.FAMILY_OPTION.of(airplaneType.getFamily())),
-                Enter.theValue(String.valueOf(airplaneType.getSeatNumber())).into(AirplaneFormInterface.SEAT_NUMBER_FIELD),
                 Click.on(AirplaneFormInterface.ADD_SEAT_LAYOUT_ROW_BUTTON),
                 Click.on(AirplaneFormInterface.ADD_SEAT_LAYOUT_ROW_BUTTON)
         );

@@ -8,13 +8,13 @@ public class FlightsInterface extends PageObject {
             .locatedBy("//table[1]//th//button");
 
     public static final Target ACTIONS_BUTTON = Target.the("Boton acciones")
-            .locatedBy("td#actions>button:first-of-type");
+            .locatedBy("#actions");
 
     public static final Target DELETE_ACTION_BUTTON = Target.the("Eliminar vuelo")
-            .locatedBy("button#delete");
+            .locatedBy("#delete");
 
     public static final Target CONFIRM_DELETE_BUTTON = Target.the("Confirmar eliminación")
-            .locatedBy("button#confirm-delete-flight");
+            .locatedBy("#confirm-delete-flight");
 
     public static final Target FILTER_BY_FLIGHT_NUMBER_INPUT = Target.the("Filtrar por numero de vuelo")
             .locatedBy("#filter-flight-number");

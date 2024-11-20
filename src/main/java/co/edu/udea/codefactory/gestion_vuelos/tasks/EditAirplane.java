@@ -22,7 +22,7 @@ public class EditAirplane implements Task {
 
         actor.attemptsTo(
                 Click.on(AirplaneFormInterface.FAMILY_FIELD),
-                Click.on(AirplaneFormInterface.FAMILY_OPTION.of(airplaneType.getFamily())),
+                Click.on(AirplaneFormInterface.familyOption(airplaneType.getFamily())),
                 Enter.theValue(String.valueOf(airplaneType.getSeatNumber())).into(AirplaneFormInterface.SEAT_NUMBER_FIELD)
         );
 
