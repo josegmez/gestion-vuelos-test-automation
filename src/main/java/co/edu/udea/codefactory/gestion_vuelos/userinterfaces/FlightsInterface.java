@@ -5,7 +5,7 @@ import net.thucydides.core.pages.PageObject;
 
 public class FlightsInterface extends PageObject {
     public static final Target TABLE_HEADERS = Target.the("Encabezados tabla")
-            .locatedBy("//table[1]//th//button");
+            .locatedBy("//table//th/*[1]");
 
     public static final Target ACTIONS_BUTTON = Target.the("Boton acciones")
             .locatedBy("#actions");
