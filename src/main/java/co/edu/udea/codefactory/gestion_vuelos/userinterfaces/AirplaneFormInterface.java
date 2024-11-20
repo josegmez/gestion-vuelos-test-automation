@@ -10,8 +10,10 @@ public class AirplaneFormInterface extends PageObject {
     public static final Target FAMILY_FIELD = Target.the("Familia dropdown")
             .locatedBy("#family");
 
-    public static final Target FAMILY_OPTION = Target.the("Opción en el dropdown de familia")
-            .locatedBy("//div[@id='Airbus']");
+    public static Target familyOption(String family) {
+        return Target.the("Opción en el dropdown de familia")
+                .locatedBy("//div[@id='" + family + "']");
+    }
 
     public static final Target ADD_SEAT_LAYOUT_ROW_BUTTON = Target.the("Agregar fila a la distribución de asientos").locatedBy(
             "#add-seats-distribution-row"
