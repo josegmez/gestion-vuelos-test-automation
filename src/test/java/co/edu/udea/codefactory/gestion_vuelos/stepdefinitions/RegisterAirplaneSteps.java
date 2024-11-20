@@ -1,6 +1,5 @@
 package co.edu.udea.codefactory.gestion_vuelos.stepdefinitions;
 
-import co.edu.udea.codefactory.gestion_vuelos.interactions.Click;
 import co.edu.udea.codefactory.gestion_vuelos.models.AirplaneType;
 import co.edu.udea.codefactory.gestion_vuelos.questions.Item;
 import co.edu.udea.codefactory.gestion_vuelos.questions.ToastMessage;
@@ -15,6 +14,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.targets.Target;
 
@@ -22,7 +22,7 @@ import java.util.Map;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
-public class AirplaneManagementSteps {
+public class RegisterAirplaneSteps {
 
     private final Actor user = OnStage.theActorInTheSpotlight();
 
@@ -48,6 +48,7 @@ public class AirplaneManagementSteps {
         AirplaneType airplaneType = AirplaneType.FromMap(data);
         user.attemptsTo(RegisterAirplane.withDetails(airplaneType));
     }
+
     @And("intenta dar clic en el botón {string} dentro del formulario")
     public void tryClickButtonInsideForm(String arg0) {
         user.attemptsTo(Click.on(RegisterAirplaneInterface.SUBMIT_BUTTON));
