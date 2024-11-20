@@ -81,10 +81,8 @@ public class RegisterAirplaneSteps {
         user.attemptsTo(
                 SearchAirplane.byModel(model)
         );
-        Target targetRow = Target.the("Airplane Row")
-                .locatedBy("#" + model);
         user.should(seeThat(
-                Item.isVisible(targetRow)
+                Item.isVisible(AirplanesInterface.airplaneRow(model))
         ));
     }
 }
