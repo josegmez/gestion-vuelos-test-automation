@@ -7,7 +7,7 @@ import co.edu.udea.codefactory.gestion_vuelos.tasks.EditAirplane;
 import co.edu.udea.codefactory.gestion_vuelos.tasks.Navigate;
 import co.edu.udea.codefactory.gestion_vuelos.tasks.SearchAirplane;
 import co.edu.udea.codefactory.gestion_vuelos.userinterfaces.AirplanesInterface;
-import co.edu.udea.codefactory.gestion_vuelos.userinterfaces.RegisterAirplaneInterface;
+import co.edu.udea.codefactory.gestion_vuelos.userinterfaces.AirplaneFormInterface;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -64,7 +64,7 @@ public class EditAirplaneSteps {
 
     @And("da clic en el botón de Guardar cambios")
     public void clicksOnSaveChangesButton() {
-        user.attemptsTo(Click.on(RegisterAirplaneInterface.SUBMIT_BUTTON));
+        user.attemptsTo(Click.on(AirplaneFormInterface.SUBMIT_BUTTON));
     }
 
     @Then("el sistema debe mostrar un mensaje de éxito: {string}")

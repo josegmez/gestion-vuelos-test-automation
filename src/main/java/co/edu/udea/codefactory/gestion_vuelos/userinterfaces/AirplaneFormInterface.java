@@ -3,7 +3,7 @@ package co.edu.udea.codefactory.gestion_vuelos.userinterfaces;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.pages.PageObject;
 
-public class RegisterAirplaneInterface extends PageObject {
+public class AirplaneFormInterface extends PageObject {
     public static final Target AIRPLANE_NAME_FIELD = Target.the("Nombre field")
             .locatedBy("#name");
 

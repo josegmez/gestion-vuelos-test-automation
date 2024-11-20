@@ -1,7 +1,7 @@
 package co.edu.udea.codefactory.gestion_vuelos.tasks;
 
 import co.edu.udea.codefactory.gestion_vuelos.models.AirplaneType;
-import co.edu.udea.codefactory.gestion_vuelos.userinterfaces.RegisterAirplaneInterface;
+import co.edu.udea.codefactory.gestion_vuelos.userinterfaces.AirplaneFormInterface;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
@@ -21,21 +21,21 @@ public class RegisterAirplane implements Task {
         Integer[] seatValues = this.airplaneType.getSeatLayoutParts();
 
         if (airplaneType.name != null) {
-            actor.attemptsTo(Enter.theValue(airplaneType.getName()).into(RegisterAirplaneInterface.AIRPLANE_NAME_FIELD));
+            actor.attemptsTo(Enter.theValue(airplaneType.getName()).into(AirplaneFormInterface.AIRPLANE_NAME_FIELD));
         }
 
         actor.attemptsTo(
-                Click.on(RegisterAirplaneInterface.FAMILY_FIELD),
-                Click.on(RegisterAirplaneInterface.FAMILY_OPTION.of(airplaneType.getFamily())),
-                Enter.theValue(String.valueOf(airplaneType.getSeatNumber())).into(RegisterAirplaneInterface.SEAT_NUMBER_FIELD),
-                Click.on(RegisterAirplaneInterface.ADD_SEAT_LAYOUT_ROW_BUTTON),
-                Click.on(RegisterAirplaneInterface.ADD_SEAT_LAYOUT_ROW_BUTTON)
+                Click.on(AirplaneFormInterface.FAMILY_FIELD),
+                Click.on(AirplaneFormInterface.FAMILY_OPTION.of(airplaneType.getFamily())),
+                Enter.theValue(String.valueOf(airplaneType.getSeatNumber())).into(AirplaneFormInterface.SEAT_NUMBER_FIELD),
+                Click.on(AirplaneFormInterface.ADD_SEAT_LAYOUT_ROW_BUTTON),
+                Click.on(AirplaneFormInterface.ADD_SEAT_LAYOUT_ROW_BUTTON)
         );
 
         for (int i = 0; i < seatValues.length; i++) {
             actor.attemptsTo(
                     Enter.theValue(String.valueOf(seatValues[i]))
-                            .into(RegisterAirplaneInterface.SEAT_LAYOUT_FIELDS.of(String.valueOf(i + 1)))
+                            .into(AirplaneFormInterface.SEAT_LAYOUT_FIELDS.of(String.valueOf(i + 1)))
             );
         }
     }

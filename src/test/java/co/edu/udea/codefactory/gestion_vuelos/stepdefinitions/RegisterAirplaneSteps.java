@@ -8,7 +8,7 @@ import co.edu.udea.codefactory.gestion_vuelos.tasks.Navigate;
 import co.edu.udea.codefactory.gestion_vuelos.tasks.RegisterAirplane;
 import co.edu.udea.codefactory.gestion_vuelos.tasks.SearchAirplane;
 import co.edu.udea.codefactory.gestion_vuelos.userinterfaces.AirplanesInterface;
-import co.edu.udea.codefactory.gestion_vuelos.userinterfaces.RegisterAirplaneInterface;
+import co.edu.udea.codefactory.gestion_vuelos.userinterfaces.AirplaneFormInterface;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -18,7 +18,6 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import net.serenitybdd.screenplay.targets.Target;
 
 import java.util.Map;
 
@@ -61,7 +60,7 @@ public class RegisterAirplaneSteps {
 
     @And("intenta dar clic en el botón {string} dentro del formulario")
     public void tryClickButtonInsideForm(String arg0) {
-        user.attemptsTo(Click.on(RegisterAirplaneInterface.SUBMIT_BUTTON));
+        user.attemptsTo(Click.on(AirplaneFormInterface.SUBMIT_BUTTON));
     }
 
     @Then("debe mostrar el mensaje de éxito, {string}")
