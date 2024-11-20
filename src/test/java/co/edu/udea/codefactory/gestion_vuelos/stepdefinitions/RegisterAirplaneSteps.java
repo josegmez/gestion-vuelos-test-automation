@@ -9,6 +9,7 @@ import co.edu.udea.codefactory.gestion_vuelos.tasks.RegisterAirplane;
 import co.edu.udea.codefactory.gestion_vuelos.tasks.SearchAirplane;
 import co.edu.udea.codefactory.gestion_vuelos.userinterfaces.AirplanesInterface;
 import co.edu.udea.codefactory.gestion_vuelos.userinterfaces.RegisterAirplaneInterface;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,6 +17,7 @@ import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actors.OnStage;
+import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.targets.Target;
 
 import java.util.Map;
@@ -24,7 +26,15 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
 public class RegisterAirplaneSteps {
 
-    private final Actor user = OnStage.theActorInTheSpotlight();
+    Actor user;
+
+    @Before
+    public void config() {
+        OnStage.setTheStage(new OnlineCast());
+        OnStage.theActorCalled("user");
+        this.user = OnStage.theActorInTheSpotlight();
+    }
+
 
     @Given("que el usuario navega a la sección de gestión de tipos de avión")
     public void navigateToAirplaneManagement() {
@@ -72,7 +82,7 @@ public class RegisterAirplaneSteps {
                 SearchAirplane.byModel(model)
         );
         Target targetRow = Target.the("Airplane Row")
-                .locatedBy("#"+model);
+                .locatedBy("#" + model);
         user.should(seeThat(
                 Item.isVisible(targetRow)
         ));
