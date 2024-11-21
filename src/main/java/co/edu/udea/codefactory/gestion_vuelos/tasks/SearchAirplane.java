@@ -5,8 +5,10 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 
-public class SearchAirplane implements Task{
+public class SearchAirplane implements Task {
     private final String model;
 
     public SearchAirplane(String model) {
@@ -16,6 +18,7 @@ public class SearchAirplane implements Task{
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
+                WaitUntil.the(AirplanesInterface.FILTER_BY_MODEL_INPUT, WebElementStateMatchers.isEnabled()),
                 Enter.theValue(model).into(AirplanesInterface.FILTER_BY_MODEL_INPUT)
         );
     }
